@@ -29,7 +29,7 @@ export function generatePassword() {
 export const DEMO_EMAIL = "director@littlemaples.example";
 export const DEMO_PASSWORD = "demo1234";
 
-const sqlite = new Database("data.db");
+const sqlite = new Database(process.env.DATABASE_PATH || "data.db");
 sqlite.pragma("journal_mode = WAL");
 sqlite.exec(`
 CREATE TABLE IF NOT EXISTS centres (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, fsa TEXT NOT NULL, neighbourhood TEXT NOT NULL, ages TEXT NOT NULL, capacity INTEGER NOT NULL, vacancy INTEGER NOT NULL DEFAULT 0, is_sample INTEGER NOT NULL DEFAULT 1);
